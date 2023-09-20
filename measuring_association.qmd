@@ -1,10 +1,14 @@
 ---
 title: "Measuring Associations"
 author: "Your name here"
-output: pdf_document
+format: pdf
+editor: visual
 ---
 
-```{r setup, include=FALSE}
+```{r}
+#| label: setup
+#| include: false
+
 # This is an R code chunk that sets up some default parameters, loads the data,
 # and loads the ggplot library. DO NOT EDIT THIS CODE CHUNK. Whenever you start
 # working on your project, you should use the green play button on the right,
@@ -24,24 +28,26 @@ load("titanic.RData")
 
 Please do not modify anything above this section, except for your name in the author field at the top.
 
-Follow the instructions on Canvas to create a PDF from this R Markdown file that describes several different associations between two variables. Each association should be placed in a separate section with appropriate headers. You can use the template below to get started, but ultimately you should replace everything with the correct variables and you should also remove these instructions.
+Follow the instructions on Canvas to create a PDF from this quarto file that describes several different associations between two variables. Each association should be placed in a separate section with appropriate headers. You can use the template below to get started, but ultimately you should replace everything with the correct variables and you should also remove these instructions.
 
 ## This is a section header
 
 This is some random text that you should replace with a description of the association between your variables. This should include a description of measurements and a figure.
 
-```{r, fig.cap="Comparative boxplots of movie runtime by genre. Outliers are shown in red."}
+```{r}
+#| label: fig-label
+#| fig-cap: This is where your caption goes.
+
 # This is an R code chunk. The R code here is producing a figure that will be
 # displayed when the R Markdown document is knit. You can get a preview of this
 # figure by hitting the green play button on the right. You can use this R code
 # chunk as a template for your own by copying and pasting, but you should
 # replace the code with proper code for the assignment. Also remember to change
 # the caption in the code chunk header above.
-ggplot(movies, aes(x=reorder(Genre, Runtime, median), y=Runtime))+
+ggplot(movies, aes(x=reorder(genre, runtime, median), y=runtime))+
   geom_boxplot(fill="skyblue", outlier.color = "red")+
   coord_flip()+
-  labs(x=NULL, y="runtime in minutes", 
-       title="Really Really Really Really Really Really Really Really Really Long Title")+
+  labs(x=NULL, y="runtime in minutes")+
   theme_bw()
 ```
 
